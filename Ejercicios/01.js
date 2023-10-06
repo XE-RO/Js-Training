@@ -37,37 +37,3 @@
 
 
 //                                                                                     Con Operador ternario
-
-//                                01
-
-// const recortarTexto=(cadena="",longitud=undefined)=>
-// (!cadena) ? console.warn("No ingresaste ninguna cadena de texto") : longitud===undefined ? console.warn("No ingresaste una cadena de texto"):
-// console.info(cadena.slice(0,longitud))
-
-// recortarTexto("hola",3)
-
-
-// const saludar=(nombre)=>(nombre)?console.warn(`Hello ${nombre}`):console.warn(`Introduce un nombre`)
-
-// saludar("Xavier")
-
-//                                02
-
-// const cadenaArreglo=(cadena="",separador=undefined)=>(!cadena)?console.warn(`No ingresaste una cadena de texto`):(separador===undefined)?console.warn(`no ingresaste el caracter separador`):console.info(cadena.split(separador))
-
-
-// cadenaArreglo("","")
-
-//                               03 (simplificacion de codigo)
-
-// const repetirTexto=(texto="",num=undefined)=>{
-//     if(!texto)return console.warn(`please introduce text`);
-//     if(num==undefined)return console.warn(`please introduce a number`);
-//     if(num==0)return console.error(`number can´t be 0`);
-//     if(Math.sign(num)==-1)return console.error(`number can´t be negative`);
-//     for(let i = 1 ; i<=num ; i++){
-//        console.info (`${texto}, ${i}`)     
-//     }
-// }
-
-// repetirTexto("Hola",5)
