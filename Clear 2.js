@@ -386,7 +386,327 @@
 // }
 
 
-let x=3,
-y=2,
-testXY="X must be small than Y";
-console.assert(x<y,{x,y,testXY})
+// let x=3,
+// y=2,
+// testXY="X must be small than Y";
+// console.assert(x<y,{x,y,testXY})
+ 
+//                                                                        TEMPORIZADORES
+// console.log(`inicio`)
+// let temporizer=setTimeout(()=>{
+// console.log(`set time out 1 sec`)
+// },5000)
+
+// //setInterval(()=>{ console.log(`se  ejecuta inedfinidamente cada cierto tiempo`)},1000)
+// //
+// console.log(temporizer)
+
+// clearTimeout(temporizer) // elimina el temporizador
+
+//                                                                        CODIGO ASINCRONO
+
+// (()=>{
+//     console.log(`Codigo asincrono`);
+//     console.log(`inicio`);
+//     function dos(){
+//         setTimeout(function(){
+//             console.log(`Dos`);
+//         },1000)
+//     }
+//         function uno(){
+//             setTimeout(function(){
+//                 console.log(`Uno`)
+//             },0)
+//             dos();
+//             console.log(`Tres`);
+//         }
+//         uno();
+//         console.log(`Fin`);
+    
+// })
+
+//                                                                            Callbacks
+
+// function cuadradoCallback(value,callback){
+//     setTimeout(()=>{
+//         callback(value,value*value);
+//     },0|Math.random()*1000);
+// }
+ 
+// //                                                                        Callback hell
+// cuadradoCallback(0,(value,result)=>{
+//     console.log("inicia callback")
+//     console.log(`Callback: ${value},${result}`)
+//     cuadradoCallback(1,(value,result)=>{
+//         console.log(`Callback: ${value},${result}`)
+//         cuadradoCallback(2,(value,result)=>{
+//             console.log(`Callback: ${value},${result}`)
+//             cuadradoCallback(3,(value,result)=>{
+//                 console.log(`Callback: ${value},${result}`)
+//                 cuadradoCallback(4,(value,result)=>{
+//                     console.log(`Callback: ${value},${result}`)
+//                     cuadradoCallback(5,(value,result)=>{
+//                         console.log(`Callback: ${value},${result}`)
+//                     });
+//                 });
+//             });
+//         });
+//     });
+// });
+
+//                                                                              PROMISES
+
+// function cuadradoPromise(value){
+//     if(typeof value !=="number")return Promise.reject(`Error el valor ${value} no es un numero`);
+    
+//     return new Promise((resolve,reject)=>{
+//         setTimeout(()=>{
+//             resolve({
+//                 value,
+//                 result:value*value
+//             })
+//         },0|Math.random()*1000);
+//     })
+// }
+// cuadradoPromise(0)
+// .then((obj)=>{
+//     //console.log(obj)
+//     console.log("inicio Promise");
+//     console.log(`Promise: ${obj.value}, ${obj.result}`)
+//     return cuadradoPromise(1)
+// })
+// .then((obj)=>{
+//     //console.log(obj)
+//     //console.log("inicio Promise");
+//     console.log(`Promise: ${obj.value}, ${obj.result}`)
+//     return cuadradoPromise(2)
+// })
+// .then((obj)=>{
+//     //console.log(obj)
+//     //console.log("inicio Promise");
+//     console.log(`Promise: ${obj.value}, ${obj.result}`)
+//     return cuadradoPromise(3)
+// })
+// .then((obj)=>{
+//     //console.log(obj)
+//     //console.log("inicio Promise");
+//     console.log(`Promise: ${obj.value}, ${obj.result}`)
+//     return cuadradoPromise(4)
+// })
+// .then((obj)=>{
+//     //console.log(obj)
+//     //console.log("inicio Promise");
+//     console.log(`Promise: ${obj.value}, ${obj.result}`)
+//     return cuadradoPromise(5)
+// })
+// .then((obj)=>{
+//     //console.log(obj)
+//     //console.log("inicio Promise");
+//     console.log(`Promise: ${obj.value}, ${obj.result}`)
+//     console.log("Fin de la promise")   
+// })
+
+// .catch();
+
+//                                                                             ASYNC - AWAIT
+
+// function cuadradoPromise(value){
+//     if(typeof value !=="number")return Promise.reject(`Error el valor ${value} no es un numero`);
+    
+//     return new Promise((resolve,reject)=>{
+//         setTimeout(()=>{
+//             resolve({
+//                 value,
+//                 result:value*value
+//             })
+//         },0|Math.random()*1000);
+//     })
+// }
+
+// async function funcionAsinronaDeclarada(){
+//     try{
+//         console.log("inicio Async function")
+//         let obj= await cuadradoPromise(0)
+//         console.log(`Async Function: ${obj.value},${obj.result}`)
+
+//         obj=await cuadradoPromise(1)
+//         console.log(`Async Function: ${obj.value},${obj.result}`)
+//         obj=await cuadradoPromise(2)
+//         console.log(`Async Function: ${obj.value},${obj.result}`)
+//         obj=await cuadradoPromise(3)
+//         console.log(`Async Function: ${obj.value},${obj.result}`)
+//         obj=await cuadradoPromise(4)
+//         console.log(`Async Function: ${obj.value},${obj.result}`)
+//         obj=await cuadradoPromise(5)
+//         console.log(`Async Function: ${obj.value},${obj.result}`)
+//         //console.log("Fin async function")
+
+//     }catch(error){
+//         console.log(error)
+//     }
+// }
+// funcionAsinronaDeclarada()
+// const funcionAsinronaExpresada = async()=>{
+//     try{
+//         console.log("inicio Async function")
+//         let obj= await cuadradoPromise(6)
+//         console.log(`Async Function: ${obj.value},${obj.result}`)
+
+//         obj=await cuadradoPromise(7)
+//         console.log(`Async Function: ${obj.value},${obj.result}`)
+//         obj=await cuadradoPromise(8)
+//         console.log(`Async Function: ${obj.value},${obj.result}`)
+//         obj=await cuadradoPromise(9)
+//         console.log(`Async Function: ${obj.value},${obj.result}`)
+//         obj=await cuadradoPromise(10)
+//         console.log(`Async Function: ${obj.value},${obj.result}`)
+//         obj=await cuadradoPromise(11)
+//         console.log(`Async Function: ${obj.value},${obj.result}`)
+//         console.log("Fin async function")
+
+//     }catch(error){
+//         console.log(error)
+//     }
+// }
+// funcionAsinronaExpresada()
+
+//                                                                               SYMBOL
+
+// let id =Symbol()
+// let id2 =Symbol()
+// console.log(id===id2)
+
+// let id =Symbol("id")
+// let id2 =Symbol("id2")
+
+// console.log(id===id2)
+// console.log(id,id2);
+// console.log(typeof id, typeof id2)
+
+
+///////////////
+
+
+// const NOMBRE=Symbol("Nombre")
+// const SALUDAR=Symbol("Saludar")
+// const persona ={
+//     [NOMBRE]:"Xavier"
+// };
+// persona.NOMBRE="Ricardo"
+// console.log(persona[NOMBRE])
+// persona[SALUDAR]=function(){
+//     console.log(`Hola`)
+// }
+// persona[SALUDAR]()
+// console.log(persona)
+
+// for(let propiedad in persona){
+//     console.log(propiedad)
+//     console.log(persona[propiedad])
+// }
+
+// console.log(Object.getOwnPropertySymbols(persona))
+
+////////////////
+
+//                                                                            Set
+
+
+// let set=new Set(["H0la","Hola",1,2,2,3,3,4,true,5,6,8,7,9,false,0,true]);
+// console.log(set);
+// const set2 = new Set();
+// set2.add(1)
+// set2.add(2)
+// set2.add(3)
+// set2.add(3)
+// set2.add(4)
+// set2.add(5)
+// console.log(set2.size)
+// for(item of set){
+//     console.log(item)
+// }
+// set2.forEach((x)=>{
+//     console.log(x)
+// })
+// let array1=Array.from(set)
+// console.log(array1[1])
+
+// set.delete("H0la");
+// console.log(set.has("Hola"));
+// console.log(set.has(3));
+// set2.clear();
+// console.log(set2);
+
+// let array3=[1,1,2,2,3,3,4,4,5,5,true,false,"Hola","HOLA"];
+
+// console.log(new Set(array3))
+
+
+//                                                                           MAPS
+// const mapa=new Map();
+// mapa.set("Nombre","Xavier");
+// mapa.set("Apellido","Delgado")
+// mapa.set("Edad",35);
+// console.log(mapa)
+// console.log(mapa.size)
+// console.log(mapa.has("Nombre"));
+// console.log(mapa.get("Nombre"));
+// mapa.set("Nombre","Xavier Delgado");
+// console.log(mapa);
+// mapa.delete("Apellido")
+// console.log(mapa)
+// for(let [key,valor]of mapa){
+//     console.log(`llave:${key}, Valor: ${valor}`)
+// }
+// mapa.set(19,"diecinueve");
+// mapa.set(false,"Falso");
+// mapa.set({},{});
+// console.log(mapa.size)
+// console.log(mapa)
+// const mapa2=new Map([["Nombre","Kenai"],["Edad",7],["Animal","perro"],[null,null]])
+
+// console.log(mapa2)
+// const llavesMapa2=[...mapa2.keys()];
+// const valoresMapa2=[...mapa2.values()];
+// console.log(llavesMapa2)
+// console.log(valoresMapa2)
+
+//                                                                           WEAKSET & WEAKMAPS 
+
+//const ws=new WeakSet([1,2,3,4,5,true,false,false,{},{},"hola","HOla"]); //Invalid value
+
+// const weak=new WeakSet();
+
+//     let value1={"value1":1};
+//     let value2={"value2":2};
+//     let value3={"value3":3};
+//     weak.add(value1);
+//     weak.add(value2);
+//     weak.add(value3);
+
+// console.log(weak)
+
+// console.log(weak.has(value2))
+// console.log(weak.has(value3))
+
+/////////////////////////////setInterval(()=>console.log(weak),1000)
+const wm=new WeakMap();
+let llave1={};
+let llave2={};
+let llave3={};
+wm.set(llave1)
+wm.set(llave2)
+wm.set(llave3)
+console.log(wm.has(llave1))
+console.log(wm.has(llave2))
+console.log(wm.has(llave3))
+
+console.log(wm.get(llave1))
+console.log(wm.get(llave2))
+console.log(wm.get(llave3))
+
+
+
+
+
+
