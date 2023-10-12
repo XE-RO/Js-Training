@@ -690,23 +690,222 @@
 // console.log(weak.has(value3))
 
 /////////////////////////////setInterval(()=>console.log(weak),1000)
-const wm=new WeakMap();
-let llave1={};
-let llave2={};
-let llave3={};
-wm.set(llave1)
-wm.set(llave2)
-wm.set(llave3)
-console.log(wm.has(llave1))
-console.log(wm.has(llave2))
-console.log(wm.has(llave3))
+// const wm=new WeakMap();
+// let llave1={};
+// let llave2={};
+// let llave3={};
+// wm.set(llave1)
+// wm.set(llave2)
+// wm.set(llave3)
+// console.log(wm.has(llave1))
+// console.log(wm.has(llave2))
+// console.log(wm.has(llave3))
 
-console.log(wm.get(llave1))
-console.log(wm.get(llave2))
-console.log(wm.get(llave3))
-
-
+// console.log(wm.get(llave1))
+// console.log(wm.get(llave2))
+// console.log(wm.get(llave3))
 
 
+//                                                                         ITERATORS
+
+// //const iterable=[1,2,3,4,5];
+// const iterable= new Map([["Nombre","Xavier"],["Edad",22]]);
+// const iterador=iterable[Symbol.iterator]();
+// console.log(iterable);
+// console.log(iterador)
+// // console.log(iterador.next())
+// // console.log(iterador.next())
+// // console.log(iterador.next())
+// // console.log(iterador.next())
+// // console.log(iterador.next())
+// // console.log(iterador.next())
+// let next=iterador.next()
+// while(!next.done){
+//     console.log(next.value);
+//     next=iterador.next()
+// }
+
+
+//                                                                       GENERATOR
+
+// function* iterable(){
+//     yield "Hola";
+//     console.log("Hola consola");
+//     yield "Hola 2";
+//     console.log("seguimos con mas instrucciones de nuestro codigo");
+//     yield "Hola 3";
+//     yield "Hola 4";
+// };
+
+// let  iterador=iterable()
+// // console.log(iterador.next())
+// // console.log(iterador.next())
+// // console.log(iterador.next())
+
+// for(let y of iterador){
+//     console.log(y);
+// }
+
+// const arr=[...iterable()]
+// console.log(arr)
+
+// function cuadrado(valor){
+//     setTimeout(()=>{
+//         console.log({valor,resultado:valor*valor})
+//     },Math.random()*1000)
+//     return {valor,resultado:valor*valor}
+// }
+
+// function*generador(){
+//     console.log("Inicia generator");
+//     yield cuadrado(0)
+//     yield cuadrado(1)
+//     yield cuadrado(2)
+//     yield cuadrado(3)
+//     yield cuadrado(4)
+//     yield cuadrado(5)
+//     console.log("Termina Generador");
+// }
+
+// let getGenerador=generador()
+// for(let item of getGenerador){
+//     console.log(item)
+// }
+
+
+//                                                                                    PROXIES
+
+// const persona={
+//     nombre:"",
+//     apellido:"",
+//     edad:0,
+// }
+// const manejador={
+//     set(obj,prop,valor){
+//         if(Object.keys(obj).indexOf(prop)===-1){
+//             return console.error(`La propiedad "${prop}" no existe en el objeto persona`)
+//         }
+//         if((prop==="nombre"||prop==="apellido")&&!(/^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/g.test(valor))){
+//             return console.error(`La propiedad ${prop} solo acepta letras y espacios en blanco`)
+//         }
+//         obj[prop]=valor
+//     }
+// }
+
+// const Xavier=new Proxy(persona,manejador)
+// Xavier.nombre="Xavier43";
+// Xavier.apellido="Delgad-o";
+// Xavier.edad=22
+// Xavier.mail="delgadox0@gmail.com"
+// console.log(Xavier)
+// console.log(persona)
+
+//                                                                 Dinamic properties
+
+// let aleatorio=Math.round(Math.random()*100+5)
+// const objUsuarios={
+//     propiedad:"Valor",
+//     [`id_${aleatorio}`]:"valor aleatorio"
+// }
+// console.log(objUsuarios)
+
+// const usuarios=["Jon","Irma","Miguel","Kala","kEnAi"];
+// usuarios.forEach((usuario,index)=>{objUsuarios[`id_${index}`]=usuario});
+// console.log(objUsuarios)
+
+
+//                                                                THIS
+
+// console.log(this)
+// //console.log(window)
+// //console.log(this===window) //*en el navegador es True*
+
+// this.window=nombre="Contexto Global"; // esto debe ser this.nombre="Contexto local" (en navegador)
+// //console.log(this.nombre)
+
+// function imprimir(){
+//     return this.nombre
+// }
+
+// console.log(imprimir())
+
+// const obj={
+//     nombre:"contexto objeto",
+//     imprimir:function(){
+//         console.log(this.nombre);
+//     }
+// }
+
+// obj.imprimir();
+// const obj2={
+//     nombre:"contexto obj2",
+//     imprimir
+// }
+// console.log(obj2.imprimir())
+
+// const obj3={
+//     nombre:"contexto obj3",
+//     imprimir:()=>{
+//         console.log(this.nombre);
+//     }
+// }
+// obj3.imprimir()
+
+// function Persona(nombre){
+//     this.nombre=nombre;
+//     //return console.log(this.nombre)
+//     // return function(){
+//     //     console.log(this.nombre,22)
+//     // }
+//     return()=>console.log(this.nombre)
+
+// }
+// let xavier=new Persona("Xavier")
+// xavier()
+
+//                                                                     CALL BIND & APPLY
+
+// console.log(this)
+// this.window=lugar="Contexto global";
+
+// function saludar(saludo,aQuien){
+//     console.log(`${saludo} ${aQuien} desde ${this.lugar}`)
+// }
+
+// const obj={
+//     lugar:"Contexto Objeto"
+// }
+// saludar.call(obj,"hola", "Xavier");
+// saludar.apply(obj,["adios","Xavier"]);
+// saludar.call(null,"hola","Xavier")
+
+// this.nombre="Window"
+
+// const persona={
+//     nombre:"Xavier",
+//     saludar:function(){
+//         console.log(`Hola ${this.nombre}`)
+//     }
+// }
+// persona.saludar()
+// const otraPersona={
+//     saludar: persona.saludar.bind(this)
+// }
+// otraPersona.saludar()
+
+//                                                                                    JSON
+
+console.log(JSON.parse("{}"))
+console.log(JSON.parse("[1,2,3]"))
+console.log(JSON.parse("true"))
+console.log(JSON.parse("false"))
+console.log(JSON.parse("19"))
+console.log(JSON.parse("null"))
+console.log(JSON.stringify({}))
+console.log(JSON.stringify([]))
+console.log(JSON.stringify(true))
+console.log(JSON.stringify(false))
+console.log(JSON.stringify(undefined))
+console.log(JSON.stringify({x:2,y:3}))
 
 
