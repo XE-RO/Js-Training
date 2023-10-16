@@ -309,45 +309,117 @@
 
 // $eventoRemover.addEventListener("dblclick",removerDobleClick);
 
+//                                                                   FLUJO DE EVENTOS
 
-const $divsEventos=document.querySelectorAll(".eventos-flujo div")
-$linkEventos=document.querySelector(".eventos-flujo a");
+// const $divsEventos=document.querySelectorAll(".eventos-flujo div")
+// $linkEventos=document.querySelector(".eventos-flujo a");
 
-function flujoEventos(e){
-    console.log(`Hola te saluda ${this.className},el click lo origino ${e.target.className}`);
-    // e.stopPropagation()
+// function flujoEventos(e){
+//     console.log(`Hola te saluda ${this.className},el click lo origino ${e.target.className}`);
+//     // e.stopPropagation()
 
+// }
+// console.log($divsEventos)
 
-}
-console.log($divsEventos)
+// $divsEventos.forEach(div=>{
+//     //Fase de borbuja
+//     div.addEventListener("click",flujoEventos)
+//     //div.addEventListener("click",flujoEventos,false)
+//     //Fase de captura
+//     // div.addEventListener("click",flujoEventos,true)
+//     // div.addEventListener("click",flujoEventos,{
+//     //     capture:true,
+//     //     once:true
+//     // })
+// }) 
+// document.addEventListener("click",(e)=>{
+//     console.log(`Click en `,e.target);
+//     if(e.target.matches(".eventos-flujo div")){
+//         flujoEventos(e)
+//     }
 
-$divsEventos.forEach(div=>{
-    //Fase de borbuja
-    div.addEventListener("click",flujoEventos)
-    //div.addEventListener("click",flujoEventos,false)
-    //Fase de captura
-    // div.addEventListener("click",flujoEventos,true)
-    // div.addEventListener("click",flujoEventos,{
-    //     capture:true,
-    //     once:true
-    // })
-}) 
-document.addEventListener("click",(e)=>{
-    console.log(`Click en `,e.target);
-    if(e.target.matches(".eventos-flujo div")){
-        flujoEventos(e)
-    }
+//     if(e.target.matches(".eventos-flujo a")){
+//         alert("hola desde el add event listener")
+//         e.preventDefault
 
-    if(e.target.matches(".eventos-flujo a")){
-        alert("hola desde el add event listener")
-        e.preventDefault
+//     }
+// })
 
-    }
-})
+// $linkEventos.addEventListener("click",e=>{
+//     alert("hola")
+//     e.preventDefault();
+//     e.stopPropagation()
+// })
+//                                                             MANIPULACION DEL BOM (BROWSER OBJECT MODEL)
+//   
+// window.addEventListener("resize",e=>{
+//     console.clear()
+//     console.log("***********Evento resize**********")
+    
+//     console.log(window.innerWidth)
+//     console.log(window.innerHeight)
+//     console.log(window.outerWidth)
+//     console.log(window.outerHeight)
+//     console.log(window.scrollX)
+//     console.log(window.scrollY)
+//     console.log(e)
+    
+// });
 
-$linkEventos.addEventListener("click",e=>{
-    alert("hola")
-    e.preventDefault();
-    e.stopPropagation()
-})
+// window.addEventListener("scroll",e=>{
+//     //console.clear()
+//     console.log("********Evento Scroll*******")
+//     console.log(window.scrollX)
+//     console.log(window.scrollY)
+//     console.log(e)
 
+// });
+
+// window.addEventListener("load",(e)=>{
+//     console.log("*****Evento Load*****")
+//     console.log(window.screenX);
+//     console.log(window.screenY);
+//     console.log(e)
+// })
+// //
+// document.addEventListener("DOMContentLoaded",(e)=>{ 
+//     console.log("*****Evento DOMContentLoaded*****")
+//     console.log(window.screenX);
+//     console.log(window.screenY);
+//     console.log(e)
+// })
+
+//                                                      METDODOS DEL BOM
+
+// const $btnAbrir=document.getElementById("abrir-ventana"),
+// $btnCerrar=document.getElementById("cerrar-ventana"),
+// $btnImprimir=document.getElementById("imprimir-ventana");
+
+// let ventana;
+
+// $btnAbrir.addEventListener("click",e=>{
+//     ventana=window.open("www.youtube.com")
+// });
+// $btnCerrar.addEventListener("click",e=>{
+//     //window.close()
+//     ventana.close()
+// });
+// $btnImprimir.addEventListener("click",e=>{
+//     window.print()
+// });
+
+//                                                OBJETOS: URL,HISTORIAL Y NAVEGADOR
+
+console.log("***********Objeto URL (location)*******")
+
+console.log(location)
+console.log(location.origin)
+console.log(location.protocol)
+console.log(location.host)
+console.log(location.hostname)
+console.log(location.port)
+console.log(location.href)
+console.log(location.hash)
+console.log(location.pathname)
+
+console.log(history)
