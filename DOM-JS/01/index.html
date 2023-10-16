@@ -33,6 +33,21 @@
         .sepia{
             filter:sepia(1);
         }
+        .eventos-flujo div{
+            padding: 4rem;
+            font-size: 2rem;
+            text-align: center;
+        }
+        .uno{
+            background-color:  #ff0055;
+        }
+        .dos{
+            background-color: #ff78c7;
+        }
+        .tres{
+            background-color: #ffa2f3;
+        }
+
     </style>
 </head>
 <body>
@@ -95,8 +110,28 @@
             <img>
             <figcaption></figcaption>
         </figure>
-    </template>
-                                    
+    </template> 
+
+    <h3>Eventos en JavaScript</h3>
+    <h4>Manejo de Eventos</h4>
+    <button onclick="holaMundo()">Evento con atributo HTML</button>
+    <br><br>
+    <button id="evento-semantico">Evento con manejador semantico</button>
+    <br><br>
+    <button id="evento-multiple">Evento con manejador multiple</button>
+    <br><br>
+    <button id="evento-remover">Removiendo eventos con manejadores multiples</button>
+    <br><br>
+    <h4>Flujo de eventos</h4>
+    <section class="eventos-flujo">
+        <div class="uno">1
+            <div class="dos">2
+                <div class="tres">3 <a href="https://youtube.com/" target="_blank" rel="noopener">Youtube</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <h3>Browser object model</h3>
     <script src="/DOM-JS/01/index.js"></script>
 </body>
 </html>

@@ -203,41 +203,151 @@
 // $ul3.appendChild($fragment);
 // document.body.appendChild($ul3);
 
-const $Cards=document.querySelector(".Cards")
-$template=document.getElementById("template-Card").content,
-$fragment=document.createDocumentFragment(),
-cardContent=[
-    {
-        title:"6",
-        img:"https://picsum.photos/200/200?6"
-    },
-    {
-        title:"7",
-        img:"https://picsum.photos/200/200?7"
-    },
-    {
-        title:"8",
-        img:"https://picsum.photos/200/200?8"
-    },
-    {
-        title:"9",
-        img:"https://picsum.photos/200/200?9"
+// const $Cards=document.querySelector(".Cards")
+// $template=document.getElementById("template-Card").content,
+// $fragment=document.createDocumentFragment(),
+// cardContent=[
+//     {
+//         title:"6",
+//         img:"https://picsum.photos/200/200?6"
+//     },
+//     {
+//         title:"7",
+//         img:"https://picsum.photos/200/200?7"
+//     },
+//     {
+//         title:"8",
+//         img:"https://picsum.photos/200/200?8"
+//     },
+//     {
+//         title:"9",
+//         img:"https://picsum.photos/200/200?9"
+//     }
+// ];
+// cardContent.forEach((el) => {
+//     $template.querySelector("img").setAttribute("src",el.img);
+//     $template.querySelector("img").setAttribute("alt",el.title);
+//     $template.querySelector("figcaption").textContent=el.title;
+
+
+//     let $clone=document.importNode($template,true);
+//     $fragment.appendChild($clone);
+
+// });
+// $Cards.appendChild($fragment);
+
+
+//                                                                  MODIFICANDO ELEMENTOS (OLD)
+
+// const $Cards=document.querySelector(".Cards"),
+// $newCard=document.createElement("figure");
+// $cloneCards=$Cards.cloneNode(true);
+// $newCard.innerHTML=`<img src="https://picsum.photos/200/200?6" alt 6> <figcaption>6</figcaption>`;
+
+// $newCard.classList.add("Card")
+// // $Cards.replaceChild($newCard,$Cards.children[2]);
+// // $Cards.insertBefore($newCard,$Cards.firstElementChild)
+// // $Cards.removeChild($Cards.lastElementChild)
+// document.body.appendChild($cloneCards);
+
+
+
+//                                                 MODIFICANDO ELEMENTOS (NEW)
+
+// const $Cards=document.querySelector(".Cards"),
+// $newCard=document.createElement("figure");
+// let $contentCard=`<img src="https://picsum.photos/200/200?6" alt 6> <figcaption></figcaption>`;
+// $newCard.classList.add("Card")
+// $newCard.insertAdjacentHTML("beforeend",$contentCard)
+// // $newCard.querySelector("figcaption").insertAdjacentText("afterbegin","6")
+// // $Cards.insertAdjacentElement("afterbegin",$newCard)
+// //$Cards.before($newCard)
+// // $Cards.append($newCard)
+// // $Cards.prepend($newCard)
+// // $Cards.after($newCard)
+
+
+
+//                                                     MANEJADORES DE EVENTOS
+
+// function holaMundo(){
+//     alert(`Hola Mundo`);
+//     console.log(event)
+// }
+// function Saludar(nombre="Desonocid@"){
+//     alert(`Hola ${nombre}`)
+// };
+
+
+
+// const $eventoSemantico=document.getElementById("evento-semantico")
+// const $eventoMultiple=document.getElementById("evento-multiple")
+// const $eventoRemover=document.getElementById("evento-remover")
+// $eventoSemantico.onclick=holaMundo
+// $eventoSemantico.onclick=function(e){
+//     alert(`Hola mundo, manejador de eventos semántico`)
+//     console.log(e)
+//     console.log(event)
+// }
+// $eventoMultiple.addEventListener("click",holaMundo)
+// $eventoMultiple.addEventListener("click",(e)=>{
+//     alert(`Hola mundo, manejador de eventos multiple`)
+//     console.log(e)
+//     console.log(e.type);
+//     console.log(e.target);
+//     console.log(event);
+// })
+// $eventoMultiple.addEventListener("click",()=>{Saludar();
+// Saludar("Xavier")
+// });
+// const removerDobleClick=(e)=>{
+//     alert(`Removiendo el evento de tipo ${e.type}`);
+//     console.log(e)
+//     $eventoRemover.removeEventListener("dblclick",removerDobleClick)
+//     $eventoRemover.disabled=true
+// }
+
+// $eventoRemover.addEventListener("dblclick",removerDobleClick);
+
+
+const $divsEventos=document.querySelectorAll(".eventos-flujo div")
+$linkEventos=document.querySelector(".eventos-flujo a");
+
+function flujoEventos(e){
+    console.log(`Hola te saluda ${this.className},el click lo origino ${e.target.className}`);
+    // e.stopPropagation()
+
+
+}
+console.log($divsEventos)
+
+$divsEventos.forEach(div=>{
+    //Fase de borbuja
+    div.addEventListener("click",flujoEventos)
+    //div.addEventListener("click",flujoEventos,false)
+    //Fase de captura
+    // div.addEventListener("click",flujoEventos,true)
+    // div.addEventListener("click",flujoEventos,{
+    //     capture:true,
+    //     once:true
+    // })
+}) 
+document.addEventListener("click",(e)=>{
+    console.log(`Click en `,e.target);
+    if(e.target.matches(".eventos-flujo div")){
+        flujoEventos(e)
     }
-];
-cardContent.forEach((el) => {
-    $template.querySelector("img").setAttribute("src",el.img);
-    $template.querySelector("img").setAttribute("alt",el.title);
-    $template.querySelector("figcaption").textContent=el.title;
 
+    if(e.target.matches(".eventos-flujo a")){
+        alert("hola desde el add event listener")
+        e.preventDefault
 
-    let $clone=document.importNode($template,true);
-    $fragment.appendChild($clone);
+    }
+})
 
-});
-$Cards.appendChild($fragment);
-
-
-
-
-
+$linkEventos.addEventListener("click",e=>{
+    alert("hola")
+    e.preventDefault();
+    e.stopPropagation()
+})
 
